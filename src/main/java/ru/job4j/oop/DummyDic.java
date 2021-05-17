@@ -3,8 +3,7 @@ package ru.job4j.oop;
 public class DummyDic {
 
     public String engToRus(String eng) {
-        String result = "Неизвестное слово. ";
-        return result + eng;
+        return "Неизвестное слово. " + eng;
     }
 
     public static void main(String[] args) {
