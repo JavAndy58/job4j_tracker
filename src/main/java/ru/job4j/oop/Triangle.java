@@ -1,7 +1,5 @@
 package ru.job4j.oop;
 
-import static java.lang.Math.sqrt;
-
 public class Triangle {
     private Point first;
     private Point second;
@@ -22,13 +20,13 @@ public class Triangle {
     }
 
     public double area() {
-        double rsl = -1;
+        double rsl = 0;
         double ab = first.distance(second);
         double ac = first.distance(third);
         double bc = second.distance(third);
-        double p = period(ab, ac, bc);
         if (this.exist(ab, ac, bc)) {
-            rsl = Math.sqrt(p * (p - ab) * (p - ac) + (p - bc));
+            double p = period(ab, ac, bc);
+            rsl = Math.sqrt((p * (p - ab) * (p - bc) * (p - ac)));
         }
         return rsl;
     }
