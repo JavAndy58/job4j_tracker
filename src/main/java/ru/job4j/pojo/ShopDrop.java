@@ -6,16 +6,6 @@ public class ShopDrop {
         products[0] = new Product("Milk", 10);
         products[1] = new Product("Bread", 4);
         products[2] = new Product("Egg", 19);
-
-        System.out.println("Массив после обнуления ячейки");
-        for (int i = 0; i < products.length; i++) {
-            Product product = products[i];
-            if (product != null) {
-                System.out.println(product.getName());
-            } else {
-                System.out.println("null");
-            }
-        }
         System.out.println("Массив после смещения");
         products = delete(products, 0);
         for(Product product:products) {
