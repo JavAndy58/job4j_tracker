@@ -1,7 +1,5 @@
 package ru.job4j.tracker;
 
-
-
 import java.util.Arrays;
 
 public class Tracker {
@@ -52,7 +50,8 @@ public class Tracker {
         boolean rsl = false;
         int index = indexOf(id);
         if (index != -1) {
-            items[index] = item;
+            String temp = item.getName();
+            items[index].setName(temp);
             rsl = true;
         }
         return rsl;
