@@ -20,7 +20,7 @@ public class StartUI {
                 System.out.println("=== Sorting an array ===");
                 Item[] temp = tracker.findAll();
                 for (Item imem:temp) {
-                    System.out.println(imem.toString());
+                    System.out.println(imem);
                 }
             } else if (select == 2) {
                 System.out.println("=== Change of application ===");
@@ -47,8 +47,8 @@ public class StartUI {
                 System.out.println("=== Find Item===");
                 int index = Integer.parseInt(scanner.nextLine());
                 Item temp = tracker.findById(index);
-                if (temp.getName() != null) {
-                    System.out.println(temp.toString());
+                if (temp != null) {
+                    System.out.println(temp);
                 } else {
                     System.out.println("Заявка с таким id не найдена");
                 }
@@ -58,7 +58,7 @@ public class StartUI {
                 Item[] temp = tracker.findByName(name);
                 if (temp.length > 0) {
                     for (Item item: temp) {
-                        System.out.println(item.toString());
+                        System.out.println(item);
                     }
                 }else {
                         System.out.println("Заявки с таким именем не найдены");
