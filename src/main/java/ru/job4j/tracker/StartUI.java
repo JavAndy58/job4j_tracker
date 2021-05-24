@@ -19,9 +19,13 @@ public class StartUI {
                 System.out.println("Добавленная заявка: " + item);
             } else if (select == 1) {
                 System.out.println("=== Sorting an array ===");
-                Item[] temp = tracker.findAll();
-                for (Item imem:temp) {
-                    System.out.println(imem);
+                Item[] items = tracker.findAll();
+                if (items.length > 0) {
+                    for (Item imem:items) {
+                        System.out.println(imem);
+                    }
+                } else {
+                    System.out.println("Хранилище еще не содержит заявок");
                 }
             } else if (select == 2) {
                 System.out.println("=== Change of application ===");
