@@ -28,16 +28,16 @@ public class StartUI {
                     System.out.println("Хранилище еще не содержит заявок");
                 }
             } else if (select == 2) {
-                System.out.println("=== Change of application ===");
+                System.out.println("=== Edit item ====");
                 System.out.println("Enter id: ");
-                int index = Integer.parseInt(scanner.nextLine());
+                int id = Integer.parseInt(scanner.nextLine());
                 System.out.println("Enter name: ");
                 String name = scanner.nextLine();
                 Item newItem = new Item(name);
-                if (tracker.replace(index, newItem)) {
-                    System.out.println("status: change OK");
+                if (tracker.replace(id, newItem)) {
+                    System.out.println("Заявка изменена успешно.");
                 } else {
-                    System.out.println("status: change No");
+                    System.out.println("Ошибка замены заявки.");
                 }
             }else if (select == 3) {
                 System.out.println("=== Delete of application ===");
