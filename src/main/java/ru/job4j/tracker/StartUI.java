@@ -56,13 +56,13 @@ public class StartUI {
                 System.out.println("=== Find items by name ===");
                 String name = scanner.nextLine();
                 Item[] temp = tracker.findByName(name);
-                for (Item item: temp) {
-                    if (temp.length != 0) {
+                if (temp.length > 0) {
+                    for (Item item: temp) {
                         System.out.println(item.toString());
-                    } else {
+                    }
+                }else {
                         System.out.println("Заявки с таким именем не найдены");
                     }
-                }
             } else if (select == 6) {
                 run = false;
             }
