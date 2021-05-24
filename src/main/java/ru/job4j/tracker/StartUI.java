@@ -44,9 +44,25 @@ public class StartUI {
                     System.out.println("status: delete No");
                 }
             } else if (select == 4) {
-
+                System.out.println("=== Find Item===");
+                int index = Integer.parseInt(scanner.nextLine());
+                Item temp = tracker.findById(index);
+                if (temp.getName() != null) {
+                    System.out.println(temp.toString());
+                } else {
+                    System.out.println("Заявка с таким id не найдена");
+                }
             } else if (select == 5) {
-
+                System.out.println("=== Find items by name ===");
+                String name = scanner.nextLine();
+                Item[] temp = tracker.findByName(name);
+                for (Item item: temp) {
+                    if (temp.length != 0) {
+                        System.out.println(item.toString());
+                    } else {
+                        System.out.println("Заявки с таким именем не найдены");
+                    }
+                }
             } else if (select == 6) {
                 run = false;
             }
