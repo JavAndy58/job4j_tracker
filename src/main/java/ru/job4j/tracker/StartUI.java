@@ -21,7 +21,7 @@ public class StartUI {
                 System.out.println("=== Sorting an array ===");
                 Item[] items = tracker.findAll();
                 if (items.length > 0) {
-                    for (Item imem:items) {
+                    for (Item imem : items) {
                         System.out.println(imem);
                     }
                 } else {
@@ -62,7 +62,7 @@ public class StartUI {
                 String name = scanner.nextLine();
                 Item[] temp = tracker.findByName(name);
                 if (temp.length > 0) {
-                    for (Item item: temp) {
+                    for (Item item : temp) {
                         System.out.println(item);
                     }
                 }else {
