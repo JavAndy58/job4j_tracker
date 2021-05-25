@@ -14,16 +14,16 @@ public class Tracker {
         return Arrays.copyOf(items, size);
     }
     public Item[] findByName(String key) {
-        Item[] itemsKey = new Item[items.length];
-        int n = 0;
+        Item[] result = new Item[size];
+        int count = 0;
         for (int i = 0; i < size; i++) {
-            Item temp = items[i];
-            if (key.equals(temp.getName())) {
-                itemsKey[n] = temp;
-                n++;
+            Item item = items[i];
+            if (item.getName().equals(key)) {
+                result[count] = item;
+                count++;
             }
         }
-        return Arrays.copyOf(itemsKey, n);
+        return Arrays.copyOf(result, count);
     }
     private int indexOf(int id) {
         int rsl = -1;
