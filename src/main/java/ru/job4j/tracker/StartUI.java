@@ -18,7 +18,7 @@ public class StartUI {
                 tracker.add(item);
                 System.out.println("Добавленная заявка: " + item);
             } else if (select == 1) {
-                System.out.println("=== Sorting an array ===");
+                System.out.println("=== Show all items ====");
                 Item[] items = tracker.findAll();
                 if (items.length > 0) {
                     for (Item imem : items) {
@@ -40,13 +40,13 @@ public class StartUI {
                     System.out.println("Ошибка замены заявки.");
                 }
             }else if (select == 3) {
-                System.out.println("=== Delete of application ===");
+                System.out.println("=== Delete item ===");
                 System.out.print("Enter id: ");
-                int index = Integer.parseInt(scanner.nextLine());
-                if (tracker.delete(index)) {
-                    System.out.println("status: delete OK");
+                int id = Integer.parseInt(scanner.nextLine());
+                if (tracker.delete(id)) {
+                    System.out.println("Заявка удалена успешно");
                 } else {
-                    System.out.println("status: delete No");
+                    System.out.println("Ошибка удаления заявки");
                 }
             } else if (select == 4) {
                 System.out.println("=== Find Item===");
