@@ -30,10 +30,9 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = new Item("new item");
         tracker.add(item);
-        String[] answer = {String.valueOf(item.getId()), "replaced item"};
+        String[] answer = {String.valueOf(item.getId())};
         StartUI.deleteItem(new StubInput(answer), tracker);
         Item created = tracker.findById(item.getId());
-        Item expected = null;
-        assertThat(created, is(expected));
+        assertNull(created);
     }
 }
