@@ -18,13 +18,11 @@ public class ValidateInput implements Input{
     public int askInt(String question) {
         boolean invalid = true;
         int value = -1;
-
         do {
-            String rsl = in.askStr(question);
             try {
-                value = Integer.parseInt(rsl);
+                value = Integer.parseInt(in.askStr(question));
             } catch (NumberFormatException e) {
-                System.out.println("Введен символ вместо числа");
+                out.println("Введен символ вместо числа");
             }
             invalid = false;
         } while (invalid);
