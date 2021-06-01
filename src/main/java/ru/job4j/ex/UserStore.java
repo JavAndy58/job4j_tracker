@@ -17,14 +17,10 @@ public class UserStore {
     }
 
     public static boolean validate(User user) throws UserInvalidException {
-        boolean rsl = false;
-        if (user.isValid() && user.getUsername().length() >= 3) {
-            rsl = true;
-        }
-        if (rsl = false) {
+        if(!user.isValid() || user.getUsername().length() < 3) {
             throw new UserInvalidException("Пользователь не валидный");
         }
-        return rsl;
+        return true;
     }
 
     public static void main(String[] args) {
