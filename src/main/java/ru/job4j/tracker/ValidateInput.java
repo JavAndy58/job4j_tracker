@@ -21,10 +21,10 @@ public class ValidateInput implements Input{
         do {
             try {
                 value = Integer.parseInt(in.askStr(question));
+                invalid = false;
             } catch (NumberFormatException e) {
                 out.println("Введен символ вместо числа");
             }
-            invalid = false;
         } while (invalid);
         return value;
     }
