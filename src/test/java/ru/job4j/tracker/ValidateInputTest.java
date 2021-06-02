@@ -33,10 +33,12 @@ public class ValidateInputTest {
     public void whenOk2Input() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"1", "0", "1"}
+                new String[] {"1", "1", "1"}
         );
         ValidateInput input = new ValidateInput(out, in);
         int select = input.askInt("Enter menu: ");
+        assertThat(select, is(1));
+        assertThat(select, is(1));
         assertThat(select, is(1));
     }
 
