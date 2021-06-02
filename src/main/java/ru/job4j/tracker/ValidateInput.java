@@ -20,10 +20,10 @@ public class ValidateInput implements Input{
         int value = -1;
         do {
             try {
-                value = Integer.parseInt(in.askStr(question));
+                value = in.askInt(question);
                 invalid = false;
             } catch (NumberFormatException e) {
-                out.println("Введен символ вместо числа");
+                out.println("Please enter validate data again.");
             }
         } while (invalid);
         return value;
