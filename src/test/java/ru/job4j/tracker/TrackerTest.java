@@ -10,15 +10,13 @@ public class TrackerTest {
     public void whenReplace() {
         Tracker tracker = new Tracker();
         Item bug = new Item();
-        Item bug2 = new Item();
         bug.setName("Bug");
         tracker.add(bug);
         int id = bug.getId();
         Item bugWithDesc = new Item();
         bugWithDesc.setName("Bug with description");
         tracker.replace(id, bugWithDesc);
-//        assertThat(tracker.findById(id).getName(), is("Bug with description"));
-        assertThat(bug, is(bug2));
+        assertThat(tracker.findById(id).getName(), is("Bug with description"));
 
     }
 
