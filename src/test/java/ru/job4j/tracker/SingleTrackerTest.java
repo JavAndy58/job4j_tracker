@@ -2,15 +2,17 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 public class SingleTrackerTest {
 
     @Test
-    public void whenSingleTack() {
+    public void whenSingleTrack() {
         SingleTracker singleTracker = SingleTracker.getInstance();
-        SingleTracker singleTracker2 = SingleTracker.getInstance();
-        assertThat(singleTracker, is (singleTracker2));
+        SingleTracker singleTracker1 = SingleTracker.getInstance();
+        assertThat(singleTracker.equals(singleTracker1), is(true));
+
     }
+
 }
