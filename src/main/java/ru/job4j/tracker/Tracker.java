@@ -6,13 +6,14 @@ import java.util.List;
 public class Tracker {
 //    private final Item[] items = new Item[100];
     private final List<Item> items = new ArrayList<>();
-    private int ids = 1;
+//    private int ids = 1;
 //    private int size = 0;
 
     public Item add(Item item) {
-        item.setId(ids++);
+//        item.setId(ids++);
 //        items[size++] = item;
         items.add(item);
+        item.setId(items.indexOf(item));
         return item;
     }
     public List<Item> findAll() {
@@ -30,35 +31,32 @@ public class Tracker {
 //                count++;
 //            }
         List<Item> result = new ArrayList<>();
-        int count = 0;
-        for (Item element : items) {
-            if (element.getName().equals(key)) {
-                result.add(count, element);
-                count++;
+        for (Item item : items) {
+            if (item.getName().equals(key)) {
+                result.add(item);
             }
         }
-//        return Arrays.copyOf(result, count);
         return result;
     }
 
     public Item findById(int id) {
 //        int index = indexOf(id);
 //        return index != - 1 ? items[index] : null;
-        return id != -1 ? items.get(indexOf(id)) : null;
+//        return id != -1 ? items.get(indexOf(id)) : null;
+        int index =indexOf(id);
+        return index != - 1 ? items.get(index) : null;
     }
 
     private int indexOf(int id) {
-//        int rsl = -1;
+        int rsl = -1;
 //        for (int index = 0; index < size; index++) {
 //            if (items[index].getId() == id) {
 //                rsl = index;
 //                break;
 //            }
-        int rsl = -1;
-        for (Item item: items) {
+        for (Item item : items) {
             if (item.getId() == id) {
-                rsl = items.indexOf(item);
-                break;
+                rsl = item.getId();
             }
         }
         return rsl;
@@ -76,6 +74,7 @@ public class Tracker {
         boolean result = index != -1;
         if (result) {
             items.set(index, item);
+            item.setId(id);
         }
         return result;
     }
