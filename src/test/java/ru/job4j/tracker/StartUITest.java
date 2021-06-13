@@ -38,7 +38,6 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         List<Item> item = Arrays.asList(new Item("Item ID"));
         String tempId = item.get(0).getName();
-
         Input in = new StubInput(
                 new String[] {"0", tempId, "1"}
         );
