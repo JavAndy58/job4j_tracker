@@ -36,8 +36,8 @@ public class StartUITest {
     public void whenFindIdAction() {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
-        List<Item> item = Arrays.asList(new Item("Item ID"));
-        String tempId = item.get(0).getName();
+        Item item = tracker.add(new Item("Item Id"));
+        String tempId = Integer.toString(item.getId());
         Input in = new StubInput(
                 new String[] {"0", tempId, "1"}
         );
