@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+
 
 public class PassportOfficeTest {
 
@@ -13,5 +15,15 @@ public class PassportOfficeTest {
         PassportOffice office = new PassportOffice();
         office.add(citizen);
         assertThat(office.get(citizen.getPassport()), is(citizen));
+    }
+
+    @Test
+    public void addNotDuplicate() {
+        Citizen citizen = new Citizen("2f44a", "Petr Arsentev");
+        Citizen citizenDuplicate = new Citizen("2f44a", "Petr Petr Petr Petr Petr");
+        PassportOffice office = new PassportOffice();
+        office.add(citizen);
+        office.add(citizenDuplicate);
+        assertThat(office.get(citizenDuplicate.getPassport()), not(citizenDuplicate.getUsername()));
     }
 }
