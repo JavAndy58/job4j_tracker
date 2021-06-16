@@ -23,7 +23,6 @@ public class PassportOfficeTest {
         Citizen citizenDuplicate = new Citizen("2f44a", "Petr Petr Petr Petr Petr");
         PassportOffice office = new PassportOffice();
         office.add(citizen);
-        office.add(citizenDuplicate);
-        assertThat(office.get(citizenDuplicate.getPassport()), not(citizenDuplicate.getUsername()));
+        assertFalse(office.add(citizenDuplicate));
     }
 }
