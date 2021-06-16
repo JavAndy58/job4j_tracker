@@ -3,6 +3,7 @@ package ru.job4j.collection;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import static org.hamcrest.CoreMatchers.*;
@@ -22,10 +23,9 @@ public class OrderConvertTest {
 
     @Test
     public void whenSingleOrderDublicate() {
-        List<Order> orders = new ArrayList<>();
-//        orders.add(new Order("3sfe", "Dress"));
-        orders.add(new Order("3sfe", "AntiDress"));
+        List<Order> orders = Arrays.asList(new Order("3sfe", "Dress"),
+                new Order("3sfe", "AntiDress"));
         HashMap<String, Order> map = OrderConvert.process(orders);
-        assertThat(map.get("3sfe"), not(new Order("3sfe", "Dress")));
+        assertThat(map.size(), not(orders.size()));
     }
 }
