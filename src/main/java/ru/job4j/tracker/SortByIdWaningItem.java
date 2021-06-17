@@ -5,6 +5,8 @@ import java.util.Comparator;
 public class SortByIdWaningItem implements Comparator<Item> {
     @Override
     public int compare(Item first, Item second) {
-        return first.getId().compareTo(second.getId());
+        Integer GetFirst = first.getId();
+        Integer GetSecond = second.getId();
+        return GetSecond.compareTo(GetFirst);
     }
 }
