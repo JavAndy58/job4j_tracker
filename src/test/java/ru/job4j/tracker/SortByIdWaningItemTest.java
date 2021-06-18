@@ -2,14 +2,12 @@ package ru.job4j.tracker;
 
 
 import org.junit.Test;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
+import java.util.Collections;
 
-public class SortByIdItemTest {
+public class SortByIdWaningItemTest {
 
     @Test
     public void whenSortId() {
@@ -25,8 +23,8 @@ public class SortByIdItemTest {
                 new Item(2, "bbbb"),
                 new Item(4, "dddd")
         );
-        SortByIdItem sortByIdItem = new SortByIdItem();
-        sortByIdItem.sortId(itemsActual);
+
+        Collections.sort(itemsActual);
         assertThat(itemsActual, is(itemsExpected));
     }
 
@@ -44,8 +42,7 @@ public class SortByIdItemTest {
                 new Item(2, "bbbb"),
                 new Item(4, "dddd")
         );
-        SortByIdItem sortByIdItem = new SortByIdItem();
-        sortByIdItem.sortIdDown(itemsActual);
+        Collections.sort(itemsActual, new SortByIdWaningItem());
         assertThat(itemsActual, is(itemsExpected));
     }
 
