@@ -19,7 +19,7 @@ public class User implements Comparable<User>{
     public int compareTo(User another) {
        int result = name.compareTo(another.name);
        if (result == 0) {
-           result = age - another.age;
+           result = Integer.compare(age, another.age);
        }
        return result;
     }
