@@ -15,13 +15,7 @@ public class StringCompare implements Comparator<String>{
                     rsl = -1;
                     break;
                 } else {
-                    if (left.length() == right.length()) {
-                        rsl = 0;
-                    } else if (left.length() > right.length()) {
-                        rsl = +1;
-                    } else {
-                        rsl = -1;
-                    }
+                    rsl = Integer.compare(left.length(), right.length());
                 }
             }
         return rsl;
