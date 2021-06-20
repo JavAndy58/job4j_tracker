@@ -19,10 +19,10 @@ public class JobSorter {
         System.out.println("Сортировка по приоритетуб возрастание");
         System.out.println(jobs);
         System.out.println("Сортировка по имени, убывание");
-        Collections.sort(jobs, new JobDescByNameBack());
+        Collections.sort(jobs, new JobAscByName());
         System.out.println(jobs);
         System.out.println("Сортировка по приоритету, убывание");
-        Collections.sort(jobs, new JobDescByPriorityBack());
+        Collections.sort(jobs, new JobAskByPriority());
         System.out.println(jobs);
     }
 }

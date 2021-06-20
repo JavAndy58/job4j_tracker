@@ -8,8 +8,7 @@ import java.util.List;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-
-public class JobDescByNameBackTest {
+public class JobAskByNameTest {
 
     @Test
     public void whenDescByNameBack() {
@@ -25,7 +24,7 @@ public class JobDescByNameBackTest {
                 new Job("Fix bug", 2),
                 new Job("X task", 0)
         );
-        Collections.sort(jobsActual, new JobDescByNameBack());
+        Collections.sort(jobsActual, new JobAscByName());
         assertThat(jobsActual, is(jobsExpected));
     }
 }
