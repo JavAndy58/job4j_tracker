@@ -2,7 +2,7 @@ package ru.job4j.tracker;
 
 import java.util.List;
 
-public class FindNameAction implements UserAction{
+public class FindNameAction implements UserAction {
     private final Output out;
 
     public FindNameAction(Output out) {
@@ -23,7 +23,7 @@ public class FindNameAction implements UserAction{
             for (Item item : temp) {
                 out.println(item);
             }
-        }else {
+        } else {
             out.println("Заявки с именем: " + name + " не найдены.");
         }
         return true;

@@ -11,7 +11,7 @@ public class Fact {
             throw new IllegalArgumentException("Должно быть положительное число");
         }
         int rsl = 1;
-        for (int index = 1; index <= n ; index++) {
+        for (int index = 1; index <= n; index++) {
             rsl *= index;
         }
         return rsl;

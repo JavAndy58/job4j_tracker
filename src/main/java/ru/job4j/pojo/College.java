@@ -6,9 +6,9 @@ public class College {
         student.setFullName("Иван Иванов Иванович");
         student.setGroup("1PCB2020");
         student.setDateAdmission(new Date());
-        System.out.println("Имя студента: " + student.getFullName() +
-                System.lineSeparator() + "Группа: " + student.getGroup() +
-                System.lineSeparator() + "Дата поступления: " + student.getDateAdmission());
+        System.out.println("Имя студента: " + student.getFullName()
+                + System.lineSeparator() + "Группа: " + student.getGroup()
+                + System.lineSeparator() + "Дата поступления: " + student.getDateAdmission());
 
     }
 }

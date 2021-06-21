@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import static java.lang.Integer.parseInt;
 
-public class LexSort implements Comparator<String>{
+public class LexSort implements Comparator<String> {
 
     @Override
     public int compare(String left, String right) {

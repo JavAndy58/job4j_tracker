@@ -8,7 +8,7 @@ public class ShopDrop {
         products[2] = new Product("Egg", 19);
         System.out.println("Массив после смещения");
         products = delete(products, 0);
-        for(Product product:products) {
+        for (Product product:products) {
             if (product != null) {
                 System.out.println(product.getName());
             } else {
