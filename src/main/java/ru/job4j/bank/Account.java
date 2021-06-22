@@ -2,8 +2,19 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Класс описывает данные номера счета, позволяющий считывать, изменять эти данные.
+ * @author Andrey
+ * @version 1.0
+ */
 public class Account {
+    /**
+     * Номер банковского счета
+     */
     private String requisite;
+    /**
+     * Баланс счета
+     */
     private double balance;
 
     public Account(String requisite, double balance) {
