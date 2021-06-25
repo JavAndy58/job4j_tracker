@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class Article {
     public static boolean generateBy(String origin, String line) {
-        boolean rsl = false;
+        boolean rsl = true;
         String[] originArray = origin.split("\\b");
         String[] lineArray = line.split("\\b");
         Set<String> originSet = new HashSet<>(Arrays.asList(originArray));
@@ -15,7 +15,6 @@ public class Article {
                 rsl = false;
                 break;
             }
-            rsl = true;
         }
         return rsl;
     }
