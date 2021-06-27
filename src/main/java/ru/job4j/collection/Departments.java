@@ -26,17 +26,11 @@ public class Departments {
     public static void sortDesc(List<String> orgs) {
         Collections.sort(orgs, new DepDescComp().thenComparing(new DepAskComp()));
     }
-
     public static void main(String[] args) {
         List<String> output = fillGaps(input);
         for (String s : output) {
             System.out.print(s + " ");
         }
-//        System.out.println("После сортировки");
-//        sortAsc(output);
-//        for (String s : output) {
-//            System.out.print(s + " ");
-//        }
         System.out.println("После обратной сортировки");
         sortDesc(output);
         for (String s : output) {
