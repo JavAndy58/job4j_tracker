@@ -3,8 +3,8 @@ package ru.job4j.collection;
 import java.util.*;
 
 public class Departments {
-    public static List<String> input = Arrays.asList("K1/SK1", "K1/SK2", "K1/SK1/SSK1", "K1/SK1/SSK2"
-                                  , "K2", "K2/SK1/SSK1", "K2/SK1/SSK2");
+    private static List<String> input = Arrays.asList("K1/SK1", "K1/SK2", "K1/SK1/SSK1",
+            "K1/SK1/SSK2", "K2", "K2/SK1/SSK1", "K2/SK1/SSK2");
 
     public static List<String> fillGaps(List<String> deps) {
         Set<String> tmp = new LinkedHashSet<>();
@@ -26,6 +26,7 @@ public class Departments {
     public static void sortDesc(List<String> orgs) {
         Collections.sort(orgs, new DepDescComp());
     }
+
     public static void main(String[] args) {
         List<String> output = fillGaps(input);
         for (String s : output) {
