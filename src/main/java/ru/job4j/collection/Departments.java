@@ -24,7 +24,7 @@ public class Departments {
     }
 
     public static void sortDesc(List<String> orgs) {
-        Collections.sort(orgs, new DepDescComp().thenComparing(new DepAskComp()));
+        Collections.sort(orgs, new DepDescComp());
     }
     public static void main(String[] args) {
         List<String> output = fillGaps(input);
