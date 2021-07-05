@@ -6,10 +6,7 @@ import java.util.function.Consumer;
 
 public class RefMethod {
     public static void main(String[] args) {
-        List<String> names = Arrays.asList(
-                "Ivan",
-                "Petr Arsentev"
-        );
+        List<String> names = Arrays.asList("Ivan", "Petr Arsentev");
         Consumer<String> out = RefMethod::cutOut;
         names.forEach(out);
     }
