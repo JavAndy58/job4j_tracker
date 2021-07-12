@@ -17,6 +17,6 @@ public class ProfilesTest {
             new Address("Sar", "ssssspnn", 5, 1)
         );
         Profiles profiles = new Profiles();
-        List<Address> rsl = profiles.collect(addresses.);
+//        List<Address> rsl = profiles.collect(addresses.);
     }
 }
