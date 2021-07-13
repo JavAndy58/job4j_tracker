@@ -11,19 +11,19 @@ import static org.junit.Assert.*;
 public class ProfilesTest {
 
     @Test
-    public void whenAddressOn() {
+    public void whenAddressSorted() {
 
         List<Profile> profiles = List.of(
-                new Profile(new Address("pnz", "ppp", 1, 1)),
-                new Profile(new Address("Mor", "ssnn", 1, 1)),
-                new Profile(new Address("Sar", "ssssspnn", 5, 1))
+                new Profile(new Address("bbb", "ppp", 1, 1)),
+                new Profile(new Address("ggg", "ssnn", 1, 1)),
+                new Profile(new Address("aaa", "ssssspnn", 5, 1))
         );
         Profiles profilesOb = new Profiles();
         List<Address> rsl = profilesOb.collect(profiles);
         List<Address> expected = Arrays.asList(
-                new Address("pnz", "ppp", 1, 1),
-                new Address("Mor", "ssnn", 1, 1),
-                new Address("Sar", "ssssspnn", 5, 1)
+                new Address("aaa", "ssssspnn", 5, 1),
+                new Address("bbb", "ppp", 1, 1),
+                new Address("ggg", "ssnn", 1, 1)
         );
         assertThat(rsl, is(expected));
     }
