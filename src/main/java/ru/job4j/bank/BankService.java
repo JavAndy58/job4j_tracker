@@ -49,15 +49,22 @@ public class BankService {
      * @param passport данные пользователя
      * @return возвращает пользователя из коллекции или null если пользователя нет
      */
+//    public User findByPassport(String passport) {
+//        User user = null;
+//        for (User key : users.keySet()) {
+//            if (key.getPassport().equals(passport)) {
+//                user = key;
+//                break;
+//            }
+//        }
+//        return user;
+//    }
     public User findByPassport(String passport) {
-        User user = null;
-        for (User key : users.keySet()) {
-            if (key.getPassport().equals(passport)) {
-                user = key;
-                break;
-            }
-        }
-        return user;
+        return users.keySet()
+                .stream()
+                .filter(e -> e.getPassport().equals(passport))
+                .findFirst()
+                .orElse(null);
     }
 
     /**
