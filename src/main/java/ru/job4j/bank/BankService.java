@@ -68,18 +68,15 @@ public class BankService {
      * @return возвращается банковский аккаунт пользователя
      */
     public Account findByRequisite(String passport, String requisite) {
-        Account accountTemp = null;
         User user = findByPassport(passport);
         if (user != null) {
-            List<Account> accounts = users.get(user);
-            for (Account account : accounts) {
-                if (account.getRequisite().equals(requisite)) {
-                    accountTemp = account;
-                    break;
-                }
-            }
+            return users.get(user)
+                    .stream()
+                    .filter(e -> e.getRequisite().equals(requisite))
+                    .findFirst()
+                    .orElse(null);
         }
-        return accountTemp;
+        return null;
     }
 
     /**
