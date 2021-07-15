@@ -16,18 +16,4 @@ public class SchoolToMap {
                         )
                 );
     }
-
-    public static void main(String[] args) {
-        List<Student> students = List.of(
-                new Student(50, "One"),
-                new Student(55, "Two"),
-                new Student(60, "Two"),
-                new Student(70, "Three")
-        );
-        SchoolToMap schoolToMap = new SchoolToMap();
-        Map<String,Student> studentMap = schoolToMap.collectMap(students);
-        studentMap.entrySet().forEach(System.out::println);
-    }
-
-
 }
