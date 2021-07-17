@@ -18,7 +18,7 @@ public class JobAskByNameTest {
                 new Job("Fix bug", 2),
                 new Job("X task", 0)
         );
-        List<Job> jobsExpected = Arrays.asList(
+        List<Job> jobsExpected = List.of(
                 new Job("Fix bug", 1),
                 new Job("Fix bug", 4),
                 new Job("Fix bug", 2),
