@@ -21,14 +21,16 @@ public class Subject {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Subject subject = (Subject) o;
-        return Objects.equals(name, subject.name);
+        return score == subject.score && Objects.equals(name, subject.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(name, score);
     }
 }

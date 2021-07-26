@@ -1,6 +1,7 @@
 package ru.job4j.stream;
 
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Tuple {
     private String name;
@@ -9,6 +10,10 @@ public class Tuple {
     public Tuple(String name, double score) {
         this.name = name;
         this.score = score;
+    }
+
+    public double getScore() {
+        return score;
     }
 
     @Override
@@ -24,6 +29,5 @@ public class Tuple {
     public int hashCode() {
         return Objects.hash(name, score);
     }
-
 
 }
