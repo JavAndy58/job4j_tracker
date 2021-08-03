@@ -1,5 +1,6 @@
 package ru.job4j.map;
 
+import java.time.OffsetTime;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -11,40 +12,25 @@ public class College {
         this.students = students;
     }
 
-//    public Student findByAccount(String account) {
-//        Student rsl = null;
-//        for (Student s: students.keySet()) {
-//            if (account.equals(s.getAccount())) {
-//                rsl = s;
-//                break;
-//            }
-//        }
-//        return rsl;
-//    }
     public Optional<Student> findByAccount(String account) {
         Optional<Student> rsl = Optional.empty();
-        for (var s : students.keySet()) {
-            if (account.equals(s.getAccount())) {
-                rsl = Optional.of(s);
+        for (var student : students.keySet()) {
+            if (account.equals(student.getAccount())) {
+                rsl = Optional.of(student);
                 break;
             }
         }
         return rsl;
     }
 
-
-
-
-
-
-    public Subject findBySubjectName(String account, String name) {
-        Subject rsl = null;
-        Optional<Student> s = findByAccount(account);
-        if (s != null) {
-            Set<Subject> subjects = students.get(s);
-            for (Subject subj : subjects) {
-                if (name.equals(subj.getName())) {
-                    rsl = subj;
+    public Optional<Subject> findBySubjectName(String account, String name) {
+        Optional<Subject> rsl = Optional.empty();
+        Optional<Student> student = findByAccount(account);
+        if (student.isPresent()) {
+            Set<Subject> subjects = students.get(student.get());
+            for (var subject : subjects) {
+                if (name.equals(subject.getName())) {
+                    rsl = Optional.of(subject);
                     break;
                 }
             }
