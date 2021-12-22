@@ -107,25 +107,6 @@ public class StartUITest {
         assertThat(tracker.findAll().get(0).getName(), is("Item name"));
     }
 
-//    @Test
-//    public void whenReplaceItem() {
-//        Output out = new StubOutput();
-//        Tracker tracker = new Tracker();
-//        Item item = tracker.add(new Item("Replaced item"));
-//        String replacedName = "New item name";
-
-//
-//        Input in = new StubInput(
-//                new String[] {"0" ,replacedId, replacedName, "1"}
-//        );
-//        List<UserAction> actions = Arrays.asList(
-//                new ReplaceAction(out),
-//                new Exit()
-//        );
-//        new StartUI(out).init(in, tracker, actions);
-//        assertThat(tracker.findById(item.getId()).getName(), is(replacedName));
-//    }
-
     @Test
     public void whenDeleteItem() {
         Output out = new StubOutput();
