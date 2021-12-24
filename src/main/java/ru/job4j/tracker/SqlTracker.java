@@ -9,6 +9,7 @@ import java.util.Properties;
 public class SqlTracker  implements Store, AutoCloseable {
     private Connection cn;
 
+    @Override
     public void init() {
         try (InputStream in = SqlTracker.class.getClassLoader().getResourceAsStream("app.properties")) {
             Properties config = new Properties();
