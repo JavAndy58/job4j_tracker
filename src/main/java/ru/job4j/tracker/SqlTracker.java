@@ -1,8 +1,8 @@
 package ru.job4j.tracker;
 
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -33,21 +33,70 @@ public class SqlTracker  implements Store, AutoCloseable {
 
     @Override
     public Item add(Item item) {
-        return null;
+        try (PreparedStatement statement =
+                cn.prepareStatement("insert into items(name, created) values (?, ?)",
+                      Statement.RETURN_GENERATED_KEYS)) {
+            statement.setString(1, item.getName());
+            statement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
+            statement.execute();
+            try (ResultSet generateKeys = statement.getGeneratedKeys()) {
+                if (generateKeys.next()) {
+                    item.setId(generateKeys.getInt(1));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return item;
     }
 
     @Override
     public boolean replace(int id, Item item) {
-        return false;
+        boolean result = false;
+        try (PreparedStatement statement =
+                cn.prepareStatement("update items set name = ?, created = ? where id = ?")) {
+            statement.setString(1, item.getName());
+            statement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
+            statement.setInt(3, id);
+            result = statement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     @Override
     public boolean delete(int id) {
-        return false;
+        boolean result = false;
+        try (PreparedStatement statement =
+                cn.prepareStatement("delete from items where id = ?")) {
+            statement.setInt(1, id);
+            result = statement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     @Override
     public List<Item> findAll() {
+        List<Item> items = new ArrayList<>();
+        try (PreparedStatement statement = cn.prepareStatement("select * from items")) {
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    items.add(new Item(
+                            resultSet.getInt("id"),
+                            resultSet.getString("name"),
+                            resultSet.getTimestamp("created").toLocalDateTime()
+                            )
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
         return null;
     }
 
@@ -60,6 +109,4 @@ public class SqlTracker  implements Store, AutoCloseable {
     public Item findById(int id) {
         return null;
     }
-
-
 }

@@ -24,7 +24,7 @@ public class SortByIdWaningItemTest {
                 new Item(4, "dddd")
         );
 
-        Collections.sort(itemsActual);
+        Collections.sort(itemsActual, new SortByIdWaningItem());
         assertThat(itemsActual, is(itemsExpected));
     }
 
