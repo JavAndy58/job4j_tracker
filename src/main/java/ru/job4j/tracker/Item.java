@@ -13,6 +13,11 @@ public class Item {
     public Item() {
     }
 
+    public Item(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Item(int id, String name, LocalDateTime created) {
         this.id = id;
         this.name = name;
