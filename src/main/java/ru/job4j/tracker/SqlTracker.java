@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 import java.io.InputStream;
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -88,25 +89,36 @@ public class SqlTracker  implements Store, AutoCloseable {
                             resultSet.getInt("id"),
                             resultSet.getString("name"),
                             resultSet.getTimestamp("created").toLocalDateTime()
-                            )
-                    );
+                            ));
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-        return null;
+        return items;
     }
 
     @Override
     public List<Item> findByName(String key) {
-        return null;
+        List<Item> items = findAll();
+        List<Item> resultItems = new ArrayList<>();
+        for (Item item : items) {
+            if (item.getName().equals(key)) {
+                resultItems.add(item);
+            }
+        }
+        return resultItems;
     }
 
     @Override
     public Item findById(int id) {
-        return null;
+        Item resultItem = null;
+        List<Item> items = findAll();
+        for (Item item : items) {
+            if (item.getId() == id) {
+                resultItem = item;
+            }
+        }
+        return resultItem;
     }
 }
