@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import org.hamcrest.Matcher;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -59,4 +60,40 @@ public class SqlTrackerTest {
         assertThat(tracker.findById(item.getId()), is(item));
     }
 
+    @Test
+    public void whenReplaceItemAndFindById() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        Item item2 = new Item("item2");
+        tracker.add(item);
+        tracker.replace(item.getId(), item2);
+        assertThat(tracker.findById(item2.getId()), is(item2));
+    }
+
+    @Test
+    public void whenDeleteItemAndFindById() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        tracker.add(item);
+        tracker.delete(item.getId());
+        assertThat(tracker.findById(item.getId()), is(nullValue()));
+    }
+
+    @Test
+    public void whenFindAllItemAndAdd() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        tracker.add(item);
+        List<Item> items = tracker.findAll();
+        assertThat(items.get(item.getId()), is(item));
+    }
+
+    @Test
+    public void whenAddItemAndFindByName() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        tracker.add(item);
+        List<Item> items = tracker.findByName(item.getName());
+        assertThat(items.get(item.getId()), is(item));
+    }
 }
