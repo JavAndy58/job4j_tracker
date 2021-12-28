@@ -84,17 +84,19 @@ public class SqlTrackerTest {
     public void whenFindAllItemAndAdd() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = new Item("item");
+        Item item2 = new Item("item2");
         tracker.add(item);
-        List<Item> items = tracker.findAll();
-        assertThat(items.get(item.getId()), is(item));
+        tracker.add(item2);
+        assertThat(tracker.findAll(), is(List.of(item, item2)));
     }
 
     @Test
     public void whenAddItemAndFindByName() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = new Item("item");
+        Item item2 = new Item("item2");
         tracker.add(item);
-        List<Item> items = tracker.findByName(item.getName());
-        assertThat(items.get(item.getId()), is(item));
+        tracker.add(item2);
+        assertThat(tracker.findByName(item.getName()), is(List.of(item)));
     }
 }
