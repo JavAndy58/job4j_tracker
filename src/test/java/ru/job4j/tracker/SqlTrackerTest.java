@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -67,7 +68,7 @@ public class SqlTrackerTest {
         Item item2 = new Item("item2");
         tracker.add(item);
         tracker.replace(item.getId(), item2);
-        assertThat(tracker.findById(item2.getId()), is(item2));
+        assertThat(tracker.findById(item.getId()).getName(), is("item2"));
     }
 
     @Test
