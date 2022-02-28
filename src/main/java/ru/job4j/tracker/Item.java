@@ -13,9 +13,7 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    @Transient
     private LocalDateTime created = LocalDateTime.now().truncatedTo(ChronoUnit.MICROS);
-    @Transient
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 
     public Item() {
