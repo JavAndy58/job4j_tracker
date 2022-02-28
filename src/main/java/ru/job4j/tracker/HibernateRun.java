@@ -13,7 +13,9 @@ public class HibernateRun {
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure().build();
         try {
-            SessionFactory sf = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+            SessionFactory sf = new MetadataSources(registry)
+                    .buildMetadata()
+                    .buildSessionFactory();
             Item item = create(new Item("Learn Hibernate"), sf);
             System.out.println(item);
             item.setName("Learn Hibernate 5.");
@@ -26,6 +28,27 @@ public class HibernateRun {
             for (Item it : list) {
                 System.out.println(it);
             }
+
+
+
+
+
+
+
+//            SessionFactory sf = new MetadataSources(registry)
+//                    .buildMetadata()
+//                    .buildSessionFactory();
+//            Session session = sf.openSession();
+//            session.beginTransaction();
+//
+//            Car car = Car.of("Toyota", new Timestamp(1459510232000L));
+//            session.save(car);
+//
+//            session.getTransaction().commit();
+//            session.close();
+
+
+
         }  catch (Exception e) {
             e.printStackTrace();
         } finally {
