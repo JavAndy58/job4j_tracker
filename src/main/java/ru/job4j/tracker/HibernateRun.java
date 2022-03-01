@@ -28,27 +28,6 @@ public class HibernateRun {
             for (Item it : list) {
                 System.out.println(it);
             }
-
-
-
-
-
-
-
-//            SessionFactory sf = new MetadataSources(registry)
-//                    .buildMetadata()
-//                    .buildSessionFactory();
-//            Session session = sf.openSession();
-//            session.beginTransaction();
-//
-//            Car car = Car.of("Toyota", new Timestamp(1459510232000L));
-//            session.save(car);
-//
-//            session.getTransaction().commit();
-//            session.close();
-
-
-
         }  catch (Exception e) {
             e.printStackTrace();
         } finally {
