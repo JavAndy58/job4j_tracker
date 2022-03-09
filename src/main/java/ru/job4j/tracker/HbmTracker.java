@@ -23,27 +23,58 @@ public class HbmTracker implements Store, AutoCloseable {
 
     @Override
     public boolean replace(int id, Item item) {
+        Session session = sf.openSession();
+        session.beginTransaction();
+        item.setId(id);
+        session.update(item);
+        session.getTransaction().commit();
+        session.close();
         return false;
     }
 
     @Override
     public boolean delete(int id) {
+        Session session = sf.openSession();
+        session.beginTransaction();
+        Item item = new Item(null);
+        item.setId(id);
+        session.delete(item);
+        session.getTransaction().commit();
+        session.close();
         return false;
     }
 
     @Override
     public List<Item> findAll() {
-        return null;
+        Session session = sf.openSession();
+        session.beginTransaction();
+        List result = session.createQuery("from ru.job4j.tracker.Item").list();
+        session.getTransaction().commit();
+        session.close();
+        return result;
     }
 
     @Override
     public List<Item> findByName(String key) {
-        return null;
+
+        Session session = sf.openSession();
+        session.beginTransaction();
+        Item result2 = session.get(Item.class, id);
+
+
+        session.getTransaction().commit();
+        session.close();
+        return result;
     }
 
     @Override
     public Item findById(int id) {
-        return null;
+        Session session = sf.openSession();
+        session.beginTransaction();
+        Item result = session.get(Item.class, id);
+        session.getTransaction().commit();
+        session.close();
+        return result;
     }
 
     @Override
