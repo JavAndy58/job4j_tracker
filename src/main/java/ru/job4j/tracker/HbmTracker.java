@@ -5,6 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
+
 import java.util.List;
 
 public class HbmTracker implements Store, AutoCloseable {
@@ -23,25 +25,32 @@ public class HbmTracker implements Store, AutoCloseable {
 
     @Override
     public boolean replace(int id, Item item) {
+        int changingStrings = 0;
         Session session = sf.openSession();
         session.beginTransaction();
-        item.setId(id);
-        session.update(item);
+        String hql = "UPDATE Item set id = :id name = :name created = :created";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", id);
+        query.setParameter("name", item.getName());
+        query.setParameter("created", item.getName());
+        int result = query.executeUpdate();
         session.getTransaction().commit();
         session.close();
-        return false;
+        return result != changingStrings;
     }
 
     @Override
     public boolean delete(int id) {
         Session session = sf.openSession();
         session.beginTransaction();
-        Item item = new Item(null);
-        item.setId(id);
-        session.delete(item);
+        int changingStrings = 0;
+        String hql = "DELETE FROM Item WHERE id = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", id);
+        int result = query.executeUpdate();
         session.getTransaction().commit();
         session.close();
-        return false;
+        return result != changingStrings;
     }
 
     @Override
@@ -56,6 +65,7 @@ public class HbmTracker implements Store, AutoCloseable {
 
     @Override
     public List<Item> findByName(String key) {
+
         Session session = sf.openSession();
         session.beginTransaction();
         List result = session.createQuery("from ru.job4j.tracker.Item where name " + key).list();
@@ -76,11 +86,9 @@ public class HbmTracker implements Store, AutoCloseable {
 
     @Override
     public void init() {
-
     }
 
     @Override
-    public void close() throws Exception {
-
+    public void close() {
     }
 }
